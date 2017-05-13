@@ -1,9 +1,7 @@
 'use strict';
 
-angular.module('ngWriter.login', ['ngRoute'])
+angular.module('ngWriter.login', [])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/login', {
-    templateUrl: 'login/login.html'
-  });
-}])
+.config([function() {
+  	
+}]);

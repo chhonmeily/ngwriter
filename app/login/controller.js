@@ -1,18 +1,40 @@
 (function(){
 	'use strict';
 
-	var login_controller = function($scope) {
+	var login_controller = function($scope, $state, httpRequester) {
 		var controller = this;
-		controller.test_function = function() {
-			console.log("test function");
-		};
-		controller.name = "NG WRITER";
+		controller.appName = "NG WRITER";
+
+		controller.user = {};
+
+		controller.handleLoginBtnClick = function() {
+			if (
+				controller.user.email == undefined || 
+				controller.user.password === undefined
+			) {
+				alert(111);
+			}
+
+			if (controller.user.email == 'admin' ||
+				controller.user.password == 'admin') 
+			{
+				$state.go('app.editor');
+				console.log(controller.user);
+			} else {
+				alert('wrong user or password');
+				return;
+			}
+	      
+	    };
+
 	};
 
 	angular.module('ngWriter.login').controller(
-		'LoginController', 
+		'loginController', 
 		[
 			'$scope',
+			'$state',
+			'httpRequester',
 			login_controller
 		]
 	);

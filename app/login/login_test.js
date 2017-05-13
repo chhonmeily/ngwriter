@@ -8,8 +8,8 @@ describe('ngWriter.login module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var view1Ctrl = $controller('LoginCtrl');
-      expect(view1Ctrl).toBeDefined();
+      var loginCtrl = $controller('LoginCtrl');
+      expect(loginCtrl).toBeDefined();
     }));
 
   });

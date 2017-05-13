@@ -1,17 +1,26 @@
-<div class="login-page" ng-controller="LoginController as Login">
+<div class="login-page" ng-controller="loginController as ngWriterLogin">
 	<div class="container">
+	<h2 class="form-signin-heading">{{ngWriterLogin.appName}}</h2>
 	  <form class="form-signin">
-	    <h2 class="form-signin-heading">{{Login.name}}</h2>
 	    <label for="inputEmail" class="sr-only">Email address</label>
-	    <input type="text" id="inputUsername" class="form-control" placeholder="Email address" required autofocus ng-model="user.">
+	    <input 
+	    	type="text" 
+	    	id="inputUsername" 
+	    	class="form-control"
+	    	placeholder="Email address" 
+	    	ng-model="ngWriterLogin.user.email"
+	    	required 
+	    	autofocus>
 	    <label for="inputPassword" class="sr-only">Password</label>
-	    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-	    <div class="checkbox">
-	      <label>
-	        <input type="checkbox" value="remember-me"> Remember me
-	      </label>
-	    </div>
-	    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="Login.test_function()">Sign in</button>
+	    <input 
+	    	type="password"
+	    	id="inputPassword" 
+	    	class="form-control" 
+	    	ng-model="ngWriterLogin.user.password"
+	    	placeholder="Password" 
+	    	required>
+	    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="ngWriterLogin.handleLoginBtnClick()">Sign in</button>
 	  </form>
+	  
 	</div> <!-- /container -->
 </div>

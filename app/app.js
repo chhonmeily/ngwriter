@@ -2,13 +2,43 @@
 
 // Declare app level module which depends on views, and components
 angular.module('ngWriter', [
-  'ngRoute',
+  'ui.router',
+  'ngWriter.httpRequester',
   'ngWriter.login',
-  'ngWriter.view2',
+  'ngWriter.editor',
   'ngWriter.version'
 ]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-
-  $routeProvider.otherwise({redirectTo: '/login'});
-}]);
+config([
+	'$urlRouterProvider',
+	'$stateProvider',
+	function(
+		$urlRouterProvider,
+		$stateProvider
+	) {
+	  	$urlRouterProvider.otherwise('/');
+	  	$stateProvider
+	  	.state(
+			'app',
+			{
+				url: '/app',
+				template: '<div ui-view></div>'
+			}
+		)
+	  	.state(
+			'app.login',
+			{
+				url: '/login',
+				templateUrl: 'login/login.html',
+				controllerUrl: 'loginController'
+			}
+		)
+		.state(
+			'app.editor',
+			{
+				url: '/editor',
+				templateUrl: 'editor/editor.html',
+				controller: 'editorController'
+			}
+		);
+	}
+]);
